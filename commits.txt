@@ -1,0 +1,35 @@
+commit f20995357ef958a3abfce57d31a261ffb78dee9d
+Author: Alejandro Amador <diegoaar.537@gmail.com>
+Date:   Sat Jul 4 14:33:23 2026 -0600
+
+    probando metodos y arreglando errores en metodos
+
+commit bba7d100536df557c9fdc40e8a16a188cef27e3f
+Author: Alejandro Amador <diegoaar.537@gmail.com>
+Date:   Sat Jul 4 13:37:40 2026 -0600
+
+    metodos de consultar y convertir arreglo
+
+commit f754cc350935abd78d19156eef379feb6a4441af
+Author: Alejandro Amador <diegoaar.537@gmail.com>
+Date:   Fri Jul 3 23:41:50 2026 -0600
+
+    metodos de eliminacion de datos
+
+commit 51568f0c0cdf26c185adb5563eb0c34501eab58a
+Author: Alejandro Amador <diegoaar.537@gmail.com>
+Date:   Fri Jul 3 23:04:54 2026 -0600
+
+    metodo de eliminar al inicio
+
+commit 58bf46bc7009475d174c563e9a0f643a6db93673
+Author: Alejandro Amador <diegoaar.537@gmail.com>
+Date:   Fri Jul 3 22:48:58 2026 -0600
+
+    metodo de agregar posicion
+
+commit 1295cbd5c5bc7d3cf2732e52ddc8b89f446abfcf
+Author: Alejandro Amador <diegoaar.537@gmail.com>
+Date:   Thu Jul 2 22:44:19 2026 -0600
+
+    first commit
