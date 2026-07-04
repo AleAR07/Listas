@@ -40,7 +40,7 @@ public class ArrayList<E> implements Lista<E> {
     }
 
     //agregar pocision 
-    public agregarPoscion(E e, int posicion) {
+    public void agregarPosicion(E e, int posicion) {
         //valida que no sea negativa y no este fuera de la lista 
         if (posicion < 0 || posicion > indice) {
             throw new IndexOutOfBoundsException(); //esta cosa detiene el programa 
@@ -70,6 +70,11 @@ public class ArrayList<E> implements Lista<E> {
 
     //eliminar elementos 
     @Override
+    public E eliminarElemento() {
+        return eliminarElementoFinal();
+    }
+
+    @Override
     public E eliminarElementoInicio() {
         //verificar si esta vacia 
         if (esVacia()) {
@@ -85,6 +90,41 @@ public class ArrayList<E> implements Lista<E> {
         //regreso el elemento que elimine
         return elementoEliminado;
 
+    }
+
+    @Override
+    public E eliminarElementoFinal() {
+        //verifica si la lista esta vacia 
+        if (esVacia()) {
+            throw new IllegalStateException("la lista ya esta vacia pa");
+        }
+        //guardamos el elemento a eliminar en una variable Object
+        Object elementoEliminado = datos[indice - 1];//el menos 1 es porque lo vemos nosotros como programadores desde 0 pero el usuario desde 1
+        //limpia el rastro
+        datos[indice - 1] = null;
+        indice--;
+        return (E) elementoEliminado;
+
+    }
+
+    @Override
+    public E eliminarElementoPosicion(int posicion) {
+        //verificar si la posicion esta dentro de la lista
+        if (posicion < 0 || posicion > indice) {
+            throw new IndexOutOfBoundsException("eso no esta dentro de la lista");
+        }
+        if (posicion == 0) {
+            return eliminarElementoInicio();
+        }
+        if (posicion == (indice - 1)) {
+            return eliminarElementoFinal();
+        }
+        Object elementoEliminado = datos[posicion];
+        //copiar y recorrer la posicion
+        System.arraycopy(datos, posicion + 1, datos, posicion, indice - 1);
+        datos[indice - 1] = null;//limpia
+        indice--;
+        return (E) elementoEliminado;
     }
 
     // Metodo privado que limpia las referencias del arreglo.
