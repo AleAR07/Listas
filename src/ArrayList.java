@@ -1,3 +1,4 @@
+
 import java.util.Iterator;
 
 // Clase ArrayList generica.   //Recuerden implementar todos los métodos en ArrayList.
@@ -12,7 +13,7 @@ public class ArrayList<E> implements Lista<E> {
     private int indice = 0;
 
     // Arreglo donde se almacenan los datos
-    private Object[] datos = null; 
+    private Object[] datos = null;
 
     // Constructor por defecto.
     // Crea una lista con tamanio inicial MAX.
@@ -30,6 +31,41 @@ public class ArrayList<E> implements Lista<E> {
 
         // Se crea el arreglo con el tamanio indicado.
         datos = new Object[tam];
+    }
+
+    //agregar elemento 
+    @Override
+    public void agregarElemento(E e) {
+        agregarFinal(e);
+    }
+
+    //agregar pocision 
+    public agregarPoscion(E e, int posicion) {
+        //valida que no sea negativa y no este fuera de la lista 
+        if (posicion < 0 || posicion > indice) {
+            throw new IndexOutOfBoundsException(); //esta cosa detiene el programa 
+
+        }
+        //verificar como agregar y si necesita que se expanda 
+        if (indice == datos.length) {
+            Object[] aux = new Object[datos.length + datos.length / 2];
+            System.arraycopy(datos, 0, aux, 0, posicion); //copio el arreglo en una lista auxiliar mas grande dejando el hueco para la nuevo dato
+            System.arraycopy(datos, posicion, aux, posicion + 1, indice - posicion);//copiamos dejando el hueco y comenzamos a pegar desde una posicion siguiente de la nueva 
+            //limpiar el arreglo anterior 
+            asegurarGC();
+            //el auxiliar es el nuevo original
+            datos = aux;
+
+        } else {
+            //no esta lleno el arreglo osea que no necesitas expandir
+            //se copia los datos y se abre el hueco
+            System.arraycopy(datos, posicion, datos, posicion + 1, indice - posicion);
+        }
+        //se pone el elemento en la posicion deseada 
+        datos[posicion] = e;
+        //incrementa el contador de datos en la lista
+        indice++;
+
     }
 
     // Metodo privado que limpia las referencias del arreglo.
@@ -127,7 +163,7 @@ public class ArrayList<E> implements Lista<E> {
     }
 
     //Un Iterator : Permite recorrer la lista usando un Iterator.
-        // Un Iterator es un objeto que permite recorrer una colección
+    // Un Iterator es un objeto que permite recorrer una colección
     // elemento por elemento, sin necesidad de acceder directamente
     // a las posiciones del arreglo.
     // 
@@ -140,7 +176,6 @@ public class ArrayList<E> implements Lista<E> {
     // }
     //
     // Para que esto funcione, la clase debe proporcionar el método iterator().
-
     // Este método permite recorrer la lista usando un Iterator.
     @Override
     public Iterator<E> iterator() {
