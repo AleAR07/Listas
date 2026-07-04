@@ -107,6 +107,27 @@ public class ArrayList<E> implements Lista<E> {
 
     }
 
+    // consultar posicion
+    @Override
+    public E consultar(int posicion) {
+        //valida que la posicion este en la lista
+        if (posicion < 0 || posicion >= indice) {
+            throw new IndexOutOfBoundsException("posicion invalida ");
+
+        }
+        return (E) datos[posicion];
+    }
+
+    //convertir arreglo
+    @Override
+    public E[] convertirArreglo() {
+        //creamos un arreglo para pasar los datos de tamaño de los elementos que tenga la lista
+        Object[] arregloLista = new Object[indice];
+        //copiamos de la lista al arreglo
+        System.arraycopy(datos, 0, arregloLista, 0, indice);
+        return (E[]) arregloLista;
+    }
+
     @Override
     public E eliminarElementoPosicion(int posicion) {
         //verificar si la posicion esta dentro de la lista
