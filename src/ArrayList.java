@@ -68,6 +68,25 @@ public class ArrayList<E> implements Lista<E> {
 
     }
 
+    //eliminar elementos 
+    @Override
+    public E eliminarElementoInicio() {
+        //verificar si esta vacia 
+        if (esVacia()) {
+            throw new IllegalStateException("la lista ya esta vacia ");
+        }
+        //guardo el elemento que se elimino
+        E elementoEliminado = (E) datos[0];
+        //muevo los datos un lugar a la izquierda para ocupar el lugar del eliminado
+        System.arraycopy(datos, 1, datos, 0, indice - 1);
+        datos[indice - 1] = null;//se limpia el rastro del elemento del ultimo
+        //contador reducido porque se pierde un elemento
+        indice--;
+        //regreso el elemento que elimine
+        return elementoEliminado;
+
+    }
+
     // Metodo privado que limpia las referencias del arreglo.
     // Esto ayuda a que los objetos puedan ser eliminados por el Garbage Collector.
     private void asegurarGC() {
