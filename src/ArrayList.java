@@ -39,7 +39,8 @@ public class ArrayList<E> implements Lista<E> {
         agregarFinal(e);
     }
 
-    //agregar pocision 
+    //agregar pocision
+    @Override
     public void agregarPosicion(E e, int posicion) {
         //valida que no sea negativa y no este fuera de la lista 
         if (posicion < 0 || posicion > indice) {
@@ -131,7 +132,7 @@ public class ArrayList<E> implements Lista<E> {
     @Override
     public E eliminarElementoPosicion(int posicion) {
         //verificar si la posicion esta dentro de la lista
-        if (posicion < 0 || posicion > indice) {
+        if (posicion < 0 || posicion >= indice) {
             throw new IndexOutOfBoundsException("eso no esta dentro de la lista");
         }
         if (posicion == 0) {
