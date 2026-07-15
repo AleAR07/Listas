@@ -45,6 +45,7 @@ public class App {
         System.out.println("numero de elementos " + lista.numElementos());
         System.out.println("========SE ACABO CHAVALES ===========");
         System.out.println("Y SI SI?");
+        //linked 
 
     }
 }

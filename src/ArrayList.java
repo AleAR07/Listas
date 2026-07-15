@@ -143,7 +143,7 @@ public class ArrayList<E> implements Lista<E> {
         }
         Object elementoEliminado = datos[posicion];
         //copiar y recorrer la posicion
-        System.arraycopy(datos, posicion + 1, datos, posicion, indice - 1);
+        System.arraycopy(datos, posicion + 1, datos, posicion, indice - posicion - 1);
         datos[indice - 1] = null;//limpia
         indice--;
         return (E) elementoEliminado;
@@ -163,11 +163,10 @@ public class ArrayList<E> implements Lista<E> {
 
         Object[] aux = null;
 
-        // Si el arreglo ya casi esta lleno, se crea uno mas grande.
-        if (!(indice < datos.length - 1)) {
-
-            // Nuevo arreglo con crecimiento del 50%.
-            aux = new Object[datos.length + datos.length / 2];
+        // Si el arreglo esta lleno, se crea uno mas grande.
+        if (indice == datos.length) {
+            int nuevoTam = datos.length == 0 ? 1 : datos.length + datos.length / 2;
+            aux = new Object[nuevoTam];
 
             // Copia los datos del arreglo viejo al nuevo.
             System.arraycopy(datos, 0, aux, 0, datos.length);
@@ -196,12 +195,13 @@ public class ArrayList<E> implements Lista<E> {
         System.out.println(indice);
 
         // Si todavia hay espacio, recorre los elementos una posicion a la derecha.
-        if (indice < datos.length - 1) {
-            System.arraycopy(datos, 0, datos, 1, indice + 1);
+        if (indice < datos.length) {
+            System.arraycopy(datos, 0, datos, 1, indice);
         } else {
 
             // Si no hay espacio, crea un arreglo mas grande.
-            auxobj = new Object[datos.length + datos.length / 2];
+            int nuevoTam = datos.length == 0 ? 1 : datos.length + datos.length / 2;
+            auxobj = new Object[nuevoTam];
 
             // Copia los elementos al nuevo arreglo desde la posicion 1.
             System.arraycopy(datos, 0, auxobj, 1, datos.length);
